@@ -10,3 +10,4 @@ __pycache__/
 nodes_modules
 *node_modules
 **node_modules
+tmp
