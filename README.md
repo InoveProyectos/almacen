@@ -1,7 +1,7 @@
 # Almacen
 
 Este proyecto cuenta con:
-- Frontend realizado en React
+- Frontend realizado en React y Vite
 - Backend realizado en Flask
 - IA utilizando machine learning
 
