@@ -1,16 +1,17 @@
 #importar las librerias necesarias
 import numpy as np
 import pandas as pd
+import os
+#importar función MultiLabelBinarizer para hacer un one hot encoder a los valores de la columna 'Ingredientes'
+from sklearn.preprocessing import MultiLabelBinarizer
 
 #extraer los datos
-df = pd.read_csv(r"analytics\recetas_limpio.csv")
+archivo_csv = os.path.join(os.path.dirname(__file__), 'recetas_limpio.csv')
+df = pd.read_csv(archivo_csv)
 
 #convertir los valores de la columna Ingredientes a una lista para luego poder transformarlos 
 df['Ingredientes']=df['Ingredientes'].str.split("-")
 print(df.head())
-
-#importar función MultiLabelBinarizer para hacer un one hot encoder a los valores de la columna 'Ingredientes'
-from sklearn.preprocessing import MultiLabelBinarizer
 
 mlb = MultiLabelBinarizer()
 ingredientes_matrix = mlb.fit_transform(df["Ingredientes"])
@@ -27,4 +28,4 @@ print('\nDataframe ya transformado:\n', ingredientes_df.head())
 print('Tamaño:\n', ingredientes_df.shape)
 
 #guardar dataframe ya transformado como un archivo csv
-ingredientes_df.to_csv('analytics/recetas_ML.csv', index=False)
+ingredientes_df.to_csv('recetas_ML.csv', index=False)
