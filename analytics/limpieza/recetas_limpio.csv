@@ -4,34 +4,34 @@ Facturas de hojaldre,Harina-Manteca-Azucar,Desayuno
 Tortilla de papas,Papas-Huevos-Cebolla,Almuerzo
 Milanesa napolitana,Carne-Tomate-Queso,Almuerzo
 Empanadas de carne,Carne picada-Cebolla-Masa,Almuerzo
-Ravioles con estofado,Pasta-Carne-Salsa de tomate,Almuerzo
-Asado argentino,Carne vacuna-Sal,Almuerzo
-Pizza mozzarella,Masa-Queso mozzarella-Tomate,Almuerzo
+Ravioles con estofado,Pasta-Carne-Salsa,Almuerzo
+Asado argentino,Carne-Sal,Almuerzo
+Pizza mozzarella,Masa-Queso-Tomate,Almuerzo
 Pastel de papa,Papas-Carne picada-Cebolla,Almuerzo
 Flan casero,Huevos-Leche-Azucar,Postre
 Arroz con leche,Arroz-Leche-Azucar,Postre
 Churros con dulce de leche,Harina-Azucar-Dulce de leche,Postre
 Helado artesanal,Leche-Azucar-Sabores,Postre
 Tiramisu,Cafe-Mascarpone-Vainillas,Postre
-Pannacotta,Crema de leche-Azucar-Gelatina,Postre
-Ensalada caprese,Tomate-Queso mozzarella-Albahaca,Almuerzo
+Pannacotta,Crema-Azucar-Gelatina,Postre
+Ensalada caprese,Tomate-Queso-Albahaca,Almuerzo
 Galletitas de manteca,Harina-Manteca-Azucar,Desayuno
 Frittata de verduras,Huevos-Verduras,Almuerzo
 Sopa minestrone,Verduras-Legumbres-Pasta,Almuerzo
-Risotto de hongos,Arroz-Hongos-Queso parmesano,Almuerzo
-Polenta con tuco,Harina de maiz-Salsa de tomate-Queso,Almuerzo
+Risotto de hongos,Arroz-Hongos-Queso,Almuerzo
+Polenta con tuco,Harina-Salsa-Queso,Almuerzo
 Panqueques con dulce de leche,Harina-Huevos-Dulce de leche,Postre
 Medialunas de manteca,Harina-Manteca-Azucar,Desayuno
 Cannoli rellenos,Masa-Ricota-Azucar,Postre
-Ñoquis de papa,Papas-Harina-Salsa de tomate,Almuerzo
+Ñoquis de papa,Papas-Harina-Salsa,Almuerzo
 Canelones de verdura,Masa-Espinaca-Ricota-Salsa,Almuerzo
 Albondigas en salsa,Carne picada-Tomate-Cebolla,Almuerzo
-Ensalada rusa,Papas-Zanahoria-Arvejas-Mayonesa,Almuerzo
+Ensalada rusa,Papas-Zanahoria-Arvejas-Aderezo,Almuerzo
 Panettone,Harina-Frutas confitadas-Pasas de uva,Postre
 Bruschetta,Pan-Tomate-Ajo-Albahaca,Desayuno
-Faina,Harina de garbanzos-Agua-Aceite,Almuerzo
+Faina,Harina-Agua-Aceite,Almuerzo
 Sorrentinos,Pasta-Jamon-Queso,Almuerzo
-Lasagna de carne,Pasta-Carne-Salsa bechamel-Queso,Almuerzo
+Lasagna de carne,Pasta-Carne-Salsa-Queso,Almuerzo
 Tallarines al pesto,Pasta-Albahaca-Ajo-Aceite,Almuerzo
 Budin de pan,Pan-Leche-Azucar-Huevos,Postre
 Crema catalana,Leche-Huevos-Azucar-Canela,Postre
@@ -48,7 +48,7 @@ Sandwich de miga,Pan de miga-Jamon-Queso,Desayuno
 Spaghetti a la carbonara,Pasta-Huevos-Panceta,Almuerzo
 Flan de dulce de leche,Huevos-Leche-Dulce de leche,Postre
 Caprese a la argentina,Tomate-Queso-Oregano,Almuerzo
-Polenta frita,Harina de maiz-Aceite-Sal,Almuerzo
+Polenta frita,Harina-Aceite-Sal,Almuerzo
 Empanadas de humita,Choclo-Cebolla-Masa,Almuerzo
 Risotto de mariscos,Arroz-Mariscos-Caldo de pescado,Almuerzo
 Guiso de lentejas,Lentejas-Chorizo-Verduras,Almuerzo
@@ -60,10 +60,10 @@ Torta de ricota,Ricota-Harina-Huevos-Azucar,Postre
 Ensalada de frutas,Frutas variadas-Azucar-Jugo de naranja,Postre
 Frittata de jamon y queso,Huevos-Jamon-Queso,Desayuno
 Suprema a la suiza,Pollo-Queso-Crema,Almuerzo
-Gnocchi de espinaca,Espinaca-Harina-Salsa de tomate,Almuerzo
+Gnocchi de espinaca,Espinaca-Harina-Salsa,Almuerzo
 Pollo al ajillo,Pollo-Ajo-Vino blanco,Almuerzo
 Budin de limon,Harina-Huevos-Limon-Azucar,Postre
-Canelones de carne,Masa-Carne-Salsa bechamel,Almuerzo
+Canelones de carne,Masa-Carne-Salsa,Almuerzo
 Empanadas de jamon y queso,Jamon-Queso-Masa,Almuerzo
 Estofado de carne,Carne-Verduras-Vino tinto,Almuerzo
 Tarta pascualina,Masa-Espinaca-Huevos,Almuerzo
@@ -79,7 +79,7 @@ Berenjenas a la parmesana,Berenjenas-Tomate-Queso,Almuerzo
 Bizcochos salados,Harina-Grasa-Sal,Desayuno
 Pastel de choclo,Choclo-Carne picada-Cebolla,Almuerzo
 Crepes de espinaca,Harina-Huevos-Espinaca,Almuerzo
-Canelones de ricota,Ricota-Masa-Salsa de tomate,Almuerzo
+Canelones de ricota,Ricota-Masa-Salsa,Almuerzo
 Empanadas de pollo,Pollo-Cebolla-Masa,Almuerzo
 Estofado de cordero,Cordero-Verduras-Vino tinto,Almuerzo
 Torta de manzana,Manzanas-Harina-Huevos-Azucar,Postre
@@ -90,14 +90,14 @@ Flan de coco,Huevos-Leche-Coco rallado,Postre
 Empanadas arabes,Carne-Cebolla-Limon-Masa,Almuerzo
 Ñoquis de calabaza,Calabaza-Harina-Salsa,Almuerzo
 Tarta de jamon y queso,Masa-Jamon-Queso,Almuerzo
-Churrasco con ensalada,Carne vacuna-Lechuga-Tomate,Almuerzo
+Churrasco con ensalada,Carne-Lechuga-Tomate,Almuerzo
 Omelette de queso,Huevos-Queso-Manteca,Desayuno
-Ensalada waldorf,Manzanas-Apio-Nueces-Mayonesa,Almuerzo
+Ensalada waldorf,Manzanas-Apio-Nueces-Aderezo,Almuerzo
 Brochettes de pollo,Pollo-Verduras-Especias,Almuerzo
 Pizza cuatro quesos,Masa-Queso,Almuerzo
 Pan dulce,Harina-Frutas secas-Pasas de uva,Postre
 Flan de cafe,Huevos-Leche-Cafe-Azucar,Postre
-Ensalada caprese con palta,Tomate-Queso mozzarella-Palta,Almuerzo
+Ensalada caprese con palta,Tomate-Queso-Palta,Almuerzo
 Milanesas de berenjena,Berenjenas-Pan rallado-Huevos,Almuerzo
 Pollo al verdeo,Pollo-Cebolla de verdeo-Crema,Almuerzo
 Tarta de atun,Masa-Atun-Cebolla,Almuerzo
@@ -110,12 +110,12 @@ Torta selva negra,Chocolate-Crema-Cerezas,Postre
 Pizza de rucula,Masa-Queso-Rucula,Almuerzo
 Sopa de cebolla,Cebolla-Caldo-Pan,Almuerzo
 Arroz con mariscos,Arroz-Mariscos-Caldo,Almuerzo
-Flan de queso,Huevos-Leche-Queso crema,Postre
+Flan de queso,Huevos-Leche-Queso,Postre
 Ñoquis de semola,Semola-Leche-Queso,Almuerzo
-Ensalada griega,Tomate-Pepino-Queso feta,Almuerzo
+Ensalada griega,Tomate-Pepino-Queso,Almuerzo
 Bife a la criolla,Carne-Tomate-Cebolla-Papas,Almuerzo
 Budin de zanahoria,Harina-Zanahoria-Huevos-Azucar,Postre
-Canelones de pollo,Masa-Pollo-Salsa blanca,Almuerzo
+Canelones de pollo,Masa-Pollo-Salsa,Almuerzo
 Empanadas tucumanas,Carne-Cebolla-Huevo duro,Almuerzo
 Estofado de conejo,Conejo-Verduras-Vino blanco,Almuerzo
 Torta de chocolate,Chocolate-Harina-Huevos-Azucar,Postre
@@ -135,17 +135,17 @@ Pan de campo,Harina-Levadura-Agua,Desayuno
 Flan de vainilla,Huevos-Leche-Azucar,Postre
 Ensalada de pollo,Pollo-Lechuga-Tomate,Almuerzo
 Milanesas de soja,Soja texturizada-Pan rallado-Huevos,Almuerzo
-Pollo a la mostaza,Pollo-Mostaza-Crema,Almuerzo
+Pollo a la mostaza,Pollo-Aderezo-Crema,Almuerzo
 Tarta de cebolla,Masa-Cebolla-Queso,Almuerzo
-Fideos con tuco,Pasta-Salsa de tomate-Carne,Almuerzo
+Fideos con tuco,Pasta-Salsa-Carne,Almuerzo
 Guiso de mondongo,Mondongo-Verduras-Tomate,Almuerzo
 Tiramisu de limon,Limon-Mascarpone-Vainillas,Postre
 Empanadas de queso,Queso-Cebolla-Masa,Almuerzo
 Estofado de cerdo,Cerdo-Verduras-Vino tinto,Almuerzo
 Torta de coco,Coco rallado-Harina-Huevos-Azucar,Postre
 Pizza de choclo,Masa-Choclo-Queso,Almuerzo
-Sopa de pollo,Pollo-Verduras-Fideos,Almuerzo
-Arroz con vegetales,Arroz-Verduras-Salsa de soja,Almuerzo
+Sopa de pollo,Pollo-Verduras-Pasta,Almuerzo
+Arroz con vegetales,Arroz-Verduras-Salsa,Almuerzo
 Flan de batata,Huevos-Leche-Batata-Azucar,Postre
 Ñoquis de remolacha,Remolacha-Harina-Salsa,Almuerzo
 Ensalada de lentejas,Lentejas-Verduras-Aceite de oliva,Almuerzo
@@ -166,10 +166,10 @@ Pollo al champignon,Pollo-Champiñones-Crema,Almuerzo
 Omelette de espinaca,Huevos-Espinaca-Manteca,Desayuno
 Ensalada de garbanzos,Garbanzos-Verduras-Limon,Almuerzo
 Brochettes de carne,Carne-Verduras-Especias,Almuerzo
-Pizza de palmitos,Masa-Palmitos-Salsa golf,Almuerzo
-Pan integral,Harina integral-Levadura-Agua,Desayuno
-Flan de queso y dulce,Huevos-Leche-Queso crema-Dulce,Postre
-Ensalada de arroz,Arroz-Verduras-Mayonesa,Almuerzo
+Pizza de palmitos,Masa-Palmitos-Salsa,Almuerzo
+Pan integral,Harina-Levadura-Agua,Desayuno
+Flan de queso y dulce,Huevos-Leche-Queso-Dulce,Postre
+Ensalada de arroz,Arroz-Verduras-Aderezo,Almuerzo
 Milanesas de pescado,Pescado-Pan rallado-Huevos,Almuerzo
 Pollo a la parmesana,Pollo-Tomate-Queso,Almuerzo
 Tarta de choclo,Masa-Choclo-Cebolla,Almuerzo
@@ -215,7 +215,7 @@ Tiramisu de cafe,Cafe-Mascarpone-Vainillas,Postre
 Empanadas de hongos,Hongos-Cebolla-Masa,Almuerzo
 Estofado de vegetales,Verduras-Legumbres-Caldo,Almuerzo
 Torta de frutilla,Frutillas-Harina-Huevos-Azucar,Postre
-Pizza de queso azul,Masa-Queso azul-Nueces,Almuerzo
+Pizza de queso azul,Masa-Queso-Nueces,Almuerzo
 Sopa de tomate,Tomate-Caldo-Crema,Almuerzo
 Arroz chaufa,Arroz-Pollo-Verduras,Almuerzo
 Flan de vainilla y coco,Huevos-Leche-Coco rallado,Postre
@@ -227,7 +227,7 @@ Canelones de choclo,Masa-Choclo-Salsa,Almuerzo
 Empanadas de espinaca y queso,Espinaca-Queso-Masa,Almuerzo
 Estofado de mariscos,Mariscos-Verduras-Vino blanco,Almuerzo
 Torta de ciruela,Ciruelas-Harina-Huevos-Azucar,Postre
-Pizza de salmon,Masa-Salmon-Queso crema,Almuerzo
+Pizza de salmon,Masa-Salmon-Queso,Almuerzo
 Sopa de miso,Miso-Tofu-Algas,Almuerzo
 Paella negra,Arroz-Calamares-Tinta de calamar,Almuerzo
 Flan de dulce de leche y coco,Huevos-Leche-Dulce de leche-Coco rallado,Postre
