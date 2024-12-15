@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, Divider, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 function App() {
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -12,23 +12,23 @@ function App() {
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
-      <AppBar position="sticky" style={{ backgroundColor: '#a8d5ba' }}> {/* Verde pastel */}
+      <AppBar position="sticky" style={{ backgroundColor: '#a8d5ba' }}>
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
             <MenuIcon />
           </IconButton>
-          
+
           {/* Logo */}
-          <img src="/logo.png" alt="Logo" style={{ height: 60, marginRight: '10px' }} />
-          
-          <Typography variant="h6" style={{ color: '#f3e5ab' }}> {/* Color trigo */}
+          <img src="/logo.png" alt="Logo" style={{ height: 60, marginRight: '10px' }} aria-label="Logo Almacén Saludable" />
+
+          <Typography variant="h6" style={{ color: '#fdfdfd' }}>
             Almacén Saludable
           </Typography>
         </Toolbar>
       </AppBar>
 
       {/* Menú Sandwich (Drawer) */}
-      <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+      <Drawer anchor="left" open={open} onClose={toggleDrawer} variant={isMobile ? 'temporary' : 'persistent'}>
         <List>
           <ListItem button>
             <ListItemText primary="Inicio" />
@@ -45,31 +45,34 @@ function App() {
 
       {/* Cuerpo principal (Body) */}
       <main style={{
-        padding: '20px', 
-        backgroundColor: '#fdfdfd',  // Blanco pastel
-        flexGrow: 1, 
+        padding: '20px',
+        backgroundColor: '#fdfdfd',
+        flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',  // Centrado vertical
-        alignItems: 'center',  // Centrado horizontal
-        textAlign: 'center',  // Centrado del texto
-        height: '100%', // Asegura que el main ocupe toda la altura restante
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        height: '100%',
       }}>
         <h1 style={{ color: '#a8d5ba', fontSize: '7rem', marginBottom: '20px' }}>Bienvenido a Almacén Saludable</h1>
-        <p style={{ color: '#333', fontSize: '2rem', marginBottom: '30px', maxWidth: '800px' }}>
-          Compra productos frescos y saludables para tu hogar.
+        <p style={{ color: '#a8d5ba', fontSize: '2rem', marginBottom: '30px', maxWidth: '800px' }}>
+          productos frescos y saludables para tu hogar.
         </p>
-        <Button variant="contained" color="primary" style={{ backgroundColor: '#a8d5ba', fontSize: '1.5rem' }}>
-          ¡Compra ahora!
+        <Button variant="contained" color="primary" style={{ backgroundColor: '#a8d5ba', fontSize: '1.5rem', color: '#fdfdfd' }}>
+          ¡ELIGE EL TUYO!
         </Button>
       </main>
 
+      {/* Aquí se renderiza el componente */}
+      <AlmacenSaludable />
+
       {/* Footer */}
       <footer style={{
-        padding: '20px', 
-        textAlign: 'center', 
-        backgroundColor: '#f1f1f1', 
-        marginTop: 'auto'  // Esto asegura que el footer siempre esté al final
+        padding: '20px',
+        textAlign: 'center',
+        backgroundColor: '#f1f1f1',
+        marginTop: 'auto'
       }}>
         <Typography variant="body2" color="textSecondary">
           © 2024 Almacén Saludable. Todos los derechos reservados.

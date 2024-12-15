@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Ignorar el archivo problemático
+../cripci\303\263n de los cambios realizados\357\200\242
