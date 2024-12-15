@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, Divider, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Button, Divider, Drawer, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import AlmacenSaludable from "../components/AlmacenSaludable";
+
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -21,7 +23,7 @@ function App() {
           {/* Logo */}
           <img src="/logo.png" alt="Logo" style={{ height: 60, marginRight: '10px' }} />
           
-          <Typography variant="h6" style={{ color: '#f3e5ab' }}> {/* Color trigo */}
+          <Typography variant="h6" style={{ color: '#fdfdfd' }}> {/* Color trigo */}
             Almacén Saludable
           </Typography>
         </Toolbar>
@@ -56,13 +58,16 @@ function App() {
         height: '100%', // Asegura que el main ocupe toda la altura restante
       }}>
         <h1 style={{ color: '#a8d5ba', fontSize: '7rem', marginBottom: '20px' }}>Bienvenido a Almacén Saludable</h1>
-        <p style={{ color: '#333', fontSize: '2rem', marginBottom: '30px', maxWidth: '800px' }}>
-          Compra productos frescos y saludables para tu hogar.
+        <p style={{ color: '#a8d5ba', fontSize: '2rem', marginBottom: '30px', maxWidth: '800px' }}>
+           productos frescos y saludables para tu hogar.
         </p>
-        <Button variant="contained" color="primary" style={{ backgroundColor: '#a8d5ba', fontSize: '1.5rem' }}>
-          ¡Compra ahora!
+        <Button variant="contained" color="primary" style={{ backgroundColor: '#a8d5ba', fontSize: '1.5rem',color:'#fdfdfd' }}>
+          ¡ELIGE EL TUYO!
         </Button>
       </main>
+
+      {/* Aquí se renderiza el componente */}
+      <AlmacenSaludable />
 
       {/* Footer */}
       <footer style={{
