@@ -1,15 +1,28 @@
 '''
+APIS Almacen
+--------------------
 Descripción:
 En este programa van a ir todo los endpoints
 '''
 
+#---------------------------------- Importar librerías ----------------------------------#
 import traceback
 import os
+import sys
 
 from flask import Flask, request, jsonify, render_template, Response, redirect , url_for
+import joblib
+import pandas as pd
+
+from models import db, Recetas
+from recetas import filtrar_id
 
 import recetas
 
+sys.path.append("..")
+from analytics.limpieza.crear_csv_para_ML import mlb, scaler_recomendar
+
+#---------------------------- Configuración de la app y la DB ----------------------------#
 # Server de flask
 app = Flask(__name__)
 
@@ -17,20 +30,72 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///recetas.db"
 
 # Se asocia el controlador de la base de datos con la aplicacion
-from models import db
 db.init_app(app)
 
-#Endpoints
+#--------------------------- Cargar modelos de machine learning ---------------------------#
+# extraer el coversor que se usó para pasar los ingredientes a columnas
+mlb=mlb
+
+# extraer el escalador del modelo 'recomendar_recetas' y cargar el modelo entrenado
+scaler_recomendar = scaler_recomendar
+model_recomendar = joblib.load("../analytics/modelos/recomendar_receta.pkl")
+
+#--------------------------------------- Endpoints ---------------------------------------#
+#RUTA DE INICO
 @app.route("/")
 def home():
     try:
-        home= 'Inicio'
-        return home
+        # En el futuro se podria realizar una página de bienvenida
+        return redirect(url_for('api'))
     except:
         return jsonify({'trace': traceback.format_exc()})
 
 
-#Lanzar el server
+#RUTA PARA VER TODOS LOS ENDPOINTS DISPONIBLES
+@app.route("/api")
+def api():
+    try:
+        result = "<h1>Endpoints disponibles:</h1>"
+        result += "<h2>[GET] /almacen --> mostrar todas las recetas en formato JSON</h2>"
+        result += "<h2>[POST] /recomendar --> ingresar ingredientes y recomendar una receta en formato JSON</h2>"
+        return result
+    except:
+        return jsonify({'trace': traceback.format_exc()})
+    
+    
+#RUTA PARA VER TODAS LAS RECETAS DISPONIBLES
+@app.route("/almacen")
+def almacen():
+    try:
+        query = recetas.obtener_todo()
+        return jsonify(query)
+    except:
+        return jsonify({'trace': traceback.format_exc()})
+        
+
+#RUTA PARA RECOMENDAR UNA RECETA A PARTIR DE LOS INGREDIENTES INGRESADOS
+@app.route("/recomendar", methods= ['GET', 'POST'])
+def recomendar():
+    if request.method == 'GET':
+        try:
+            return render_template('recomendar.html')
+        except:
+            return jsonify({'trace': traceback.format_exc()})
+        
+    if request.method == 'POST':
+        try:
+            ingredientes_user = request.form.get('ingredientes').split(',')
+            ingredientes_mlb = pd.DataFrame(mlb.transform([ingredientes_user]), columns=mlb.classes_)
+            ingredientes_scaler = scaler_recomendar.transform(ingredientes_mlb)
+            distancias, indices = model_recomendar.kneighbors(ingredientes_scaler)
+            indice = int((indices[0][0])+1)
+            data = recetas.filtrar_id(indice)
+            return jsonify(data)
+        except:
+            return jsonify({'trace': traceback.format_exc()})
+    
+
+#----------------------------------- Lanzar el server -----------------------------------#
 if __name__ == '__main__':
     print('Iniciando')
     

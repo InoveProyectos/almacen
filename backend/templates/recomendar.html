@@ -1,0 +1,17 @@
+<!--Template para ingresar los ingredientes y asi usar el modelo 'recomendar_recetas'-->
+
+<!doctype html>
+<html>
+
+<!-- Titulo de la página-->
+<head>
+    <title>Escriba sus ingredientes</title>
+</head>
+
+<body>
+<form method = 'POST' action="{{url_for('recomendar')}}">
+    <label>Ingredientes:</label><br>
+    <input type="text" name="ingredientes"><br>
+</form>
+</body>
+</html>
