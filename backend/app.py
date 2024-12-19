@@ -15,12 +15,8 @@ import joblib
 import pandas as pd
 
 from models import db, Recetas
-from recetas import filtrar_id
 
 import recetas
-
-sys.path.append("..")
-from analytics.limpieza.crear_csv_para_ML import mlb, scaler_recomendar
 
 #---------------------------- Configuración de la app y la DB ----------------------------#
 # Server de flask
@@ -33,12 +29,13 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///recetas.db"
 db.init_app(app)
 
 #--------------------------- Cargar modelos de machine learning ---------------------------#
-# extraer el coversor que se usó para pasar los ingredientes a columnas
-mlb=mlb
+# cargar el mlb que se usó para pasar los ingredientes a columnas
+mlb = joblib.load("../analytics/limpieza/mlb_ml.pkl")
 
 # extraer el escalador del modelo 'recomendar_recetas' y cargar el modelo entrenado
-scaler_recomendar = scaler_recomendar
+scaler_recomendar = joblib.load("../analytics/modelos/scaler_recomendar.pkl")
 model_recomendar = joblib.load("../analytics/modelos/recomendar_receta.pkl")
+
 
 #--------------------------------------- Endpoints ---------------------------------------#
 #RUTA DE INICO
