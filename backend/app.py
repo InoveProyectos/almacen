@@ -71,26 +71,18 @@ def almacen():
         
 
 #RUTA PARA RECOMENDAR UNA RECETA A PARTIR DE LOS INGREDIENTES INGRESADOS
-@app.route("/recomendar", methods= ['GET', 'POST'])
+@app.route("/recomendar", methods= ['POST'])
 def recomendar():
-    if request.method == 'GET':
-        try:
-            return render_template('recomendar.html')
-        except:
-            return jsonify({'trace': traceback.format_exc()})
-        
-    if request.method == 'POST':
-        try:
-            ingredientes_user = request.form.get('ingredientes').split(',')
-            ingredientes_mlb = pd.DataFrame(mlb.transform([ingredientes_user]), columns=mlb.classes_)
-            ingredientes_scaler = scaler_recomendar.transform(ingredientes_mlb)
-            distancias, indices = model_recomendar.kneighbors(ingredientes_scaler)
-            indice = int((indices[0][0])+1)
-            data = recetas.filtrar_id(indice)
-            return jsonify(data)
-        except:
-            return jsonify({'trace': traceback.format_exc()})
-    
+    try:
+        ingredientes_user = request.json.get('ingredientes').split(',')
+        ingredientes_mlb = pd.DataFrame(mlb.transform([ingredientes_user]), columns=mlb.classes_)
+        ingredientes_scaler = scaler_recomendar.transform(ingredientes_mlb)
+        distancias, indices = model_recomendar.kneighbors(ingredientes_scaler)
+        indice = int((indices[0][0])+1)
+        data = recetas.filtrar_id(indice)
+        return jsonify(data)
+    except:
+        return jsonify({'trace': traceback.format_exc()})
 
 #----------------------------------- Lanzar el server -----------------------------------#
 if __name__ == '__main__':
