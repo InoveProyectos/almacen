@@ -11,6 +11,7 @@ import os
 import sys
 
 from flask import Flask, request, jsonify, render_template, Response, redirect , url_for
+from flask_cors import CORS
 import joblib
 import pandas as pd
 
@@ -21,6 +22,8 @@ import recetas
 #---------------------------- Configuración de la app y la DB ----------------------------#
 # Server de flask
 app = Flask(__name__)
+
+CORS(app)
 
 # Se indica al sistema (app) de donde leer la base de datos
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///recetas.db"
