@@ -36,8 +36,8 @@ db.init_app(app)
 mlb = joblib.load("../analytics/limpieza/mlb_ml.pkl")
 
 # extraer el escalador del modelo 'recomendar_recetas' y cargar el modelo entrenado
-scaler_recomendar = joblib.load("../analytics/modelos/scaler_recomendar.pkl")
-model_recomendar = joblib.load("../analytics/modelos/recomendar_receta.pkl")
+scaler_recomendar = joblib.load("../analytics/modelos/recomendar_receta/scaler_recomendar.pkl")
+model_recomendar = joblib.load("../analytics/modelos/recomendar_receta/recomendar_receta.pkl")
 
 
 #--------------------------------------- Endpoints ---------------------------------------#
