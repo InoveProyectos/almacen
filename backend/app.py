@@ -11,6 +11,7 @@ import os
 import sys
 
 from flask import Flask, request, jsonify, render_template, Response, redirect , url_for
+from flask_cors import CORS, cross_origin
 import joblib
 import pandas as pd
 
@@ -21,6 +22,8 @@ import recetas
 #---------------------------- Configuración de la app y la DB ----------------------------#
 # Server de flask
 app = Flask(__name__)
+
+CORS(app)
 
 # Se indica al sistema (app) de donde leer la base de datos
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///recetas.db"
@@ -33,8 +36,8 @@ db.init_app(app)
 mlb = joblib.load("../analytics/limpieza/mlb_ml.pkl")
 
 # extraer el escalador del modelo 'recomendar_recetas' y cargar el modelo entrenado
-scaler_recomendar = joblib.load("../analytics/modelos/scaler_recomendar.pkl")
-model_recomendar = joblib.load("../analytics/modelos/recomendar_receta.pkl")
+scaler_recomendar = joblib.load("../analytics/modelos/recomendar_receta/scaler_recomendar.pkl")
+model_recomendar = joblib.load("../analytics/modelos/recomendar_receta/recomendar_receta.pkl")
 
 
 #--------------------------------------- Endpoints ---------------------------------------#
@@ -72,6 +75,7 @@ def almacen():
 
 #RUTA PARA RECOMENDAR UNA RECETA A PARTIR DE LOS INGREDIENTES INGRESADOS
 @app.route("/recomendar", methods= ['POST'])
+@cross_origin(origin='*', headers=['Content-Type','Authorization'])
 def recomendar():
     try:
         ingredientes_user = request.json.get('ingredientes').split(',')
