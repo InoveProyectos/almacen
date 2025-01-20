@@ -39,6 +39,10 @@ mlb = joblib.load("../analytics/limpieza/mlb_ml.pkl")
 scaler_recomendar = joblib.load("../analytics/modelos/recomendar_receta/scaler_recomendar.pkl")
 model_recomendar = joblib.load("../analytics/modelos/recomendar_receta/recomendar_receta.pkl")
 
+# extraer el escalador del modelo 'clasificar_recetas' y cargar el modelo entrenado
+scaler_clasificar = joblib.load("../analytics/modelos/clasificar_receta/scaler_clasificar.pkl")
+model_clasificar = joblib.load("../analytics/modelos/clasificar_receta/clasificar_receta.pkl")
+
 
 #--------------------------------------- Endpoints ---------------------------------------#
 #RUTA DE INICO
@@ -58,6 +62,7 @@ def api():
         result = "<h1>Endpoints disponibles:</h1>"
         result += "<h2>[GET] /almacen --> mostrar todas las recetas en formato JSON</h2>"
         result += "<h2>[POST] /recomendar --> ingresar ingredientes y recomendar una receta en formato JSON</h2>"
+        result += "<h2>[POST] /insertar --> ingresar una nueva receta en formato JSON</h2>"
         return result
     except:
         return jsonify({'trace': traceback.format_exc()})
@@ -85,6 +90,38 @@ def recomendar():
         indice = int((indices[0][0])+1)
         data = recetas.filtrar_id(indice)
         return jsonify(data)
+    except:
+        return jsonify({'trace': traceback.format_exc()})
+    
+
+#RUTA PARA INSERTAR UNA NUEVA RECETA A LA BASE DE DATOS
+@app.route("/insertar", methods= ['POST'])
+@cross_origin(origin='*', headers=['Content-Type','Authorization'])
+def insertar():
+    try:
+        #obtener nombre e ingredientes 
+        nombre = str(request.json.get('nombre')).capitalize()
+        ingredientes = request.json.get('ingredientes')
+        
+        #predecir la categoría de la receta con el modelo 'clasificar_receta'
+        ingredientes_model = ingredientes.split(',')        
+        ingredientes_mlb = pd.DataFrame(mlb.transform([ingredientes_model]), columns=mlb.classes_)
+        ingredientes_scaler = scaler_clasificar.transform(ingredientes_mlb)
+        predict_model = model_clasificar.predict(ingredientes_scaler)
+        
+        #obtener ingredientes para insertar en la base de datos y la categoria que predijo el modelo
+        ingredientes_db = ingredientes.replace(',','-')
+        categoria = str(predict_model[0])
+        
+        #verificar que la receta no esté en la base de datos
+        query = db.session.query(Recetas).filter(Recetas.nombre==nombre).first()
+        if query:  
+            return jsonify('Esta receta ya existe')
+        
+        #insertar la nueva receta en la base de datos en caso de no existir
+        recetas.insert(nombre, ingredientes_db, categoria)
+        #mostrar el almacen para buscar la nueva receta
+        return redirect(url_for('almacen'))
     except:
         return jsonify({'trace': traceback.format_exc()})
 
