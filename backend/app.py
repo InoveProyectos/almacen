@@ -62,7 +62,7 @@ def api():
         result = "<h1>Endpoints disponibles:</h1>"
         result += "<h2>[GET] /almacen --> mostrar todas las recetas en formato JSON</h2>"
         result += "<h2>[POST] /recomendar --> ingresar ingredientes y recomendar una receta en formato JSON</h2>"
-        result += "<h2>[POST] /insertar --> ingresar una nueva receta en formato JSON</h2>"
+        result += "<h2>[POST] /insertar --> insertar una nueva receta por JSON</h2>"
         return result
     except:
         return jsonify({'trace': traceback.format_exc()})
