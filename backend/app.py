@@ -120,10 +120,8 @@ def insertar():
         
         #insertar la nueva receta en la base de datos en caso de no existir
         recetas.insert(nombre, ingredientes_db, categoria)
-        #mostrar el almacen para buscar la nueva receta
         
         return jsonify({'Nombre': nombre, 'Ingredientes': ingredientes_db, 'Categoría': categoria }), 201
-    
     except:
         return jsonify({'trace': traceback.format_exc()})
 
