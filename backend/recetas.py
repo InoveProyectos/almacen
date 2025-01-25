@@ -37,3 +37,10 @@ def filtrar_id(id):
         json_result['Categoria']= i.categoria
         json_result_list.append(json_result)
     return json_result_list
+
+#INSERTAR NUEVA RECETA
+def insert(nombre, ingredientes, categoria):
+    #crear nueva receta
+    receta = Recetas(nombre=nombre, ingredientes=ingredientes, categoria=categoria)
+    db.session.add(receta)
+    db.session.commit()
