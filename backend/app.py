@@ -53,7 +53,7 @@ def home():
         return redirect(url_for('api'))
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
 
 
 #RUTA PARA VER TODOS LOS ENDPOINTS DISPONIBLES
@@ -69,7 +69,7 @@ def api():
         return result
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
     
 #RUTA PARA VER TODAS LAS RECETAS DISPONIBLES
@@ -80,7 +80,7 @@ def almacen():
         return jsonify(query)
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
         
 #RUTA PARA BUSCAR UNA RECETA QUE TENGA CIERTA PALABRA EN EL NOMBRE
@@ -94,7 +94,7 @@ def buscar(palabra):
             return jsonify({'Respuesta': 'Receta no encontrada'}), 404
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
 
 
 #RUTA PARA BUSCAR UNA RECETA SEGÚN SU ID
@@ -108,7 +108,7 @@ def buscar_id(id):
             return jsonify({'Respuesta': 'Id no encontrado'}), 404
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
 
 
 #RUTA PARA RECOMENDAR UNA RECETA A PARTIR DE LOS INGREDIENTES INGRESADOS
@@ -125,7 +125,7 @@ def recomendar():
         return jsonify(data)
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
 
 #RUTA PARA INSERTAR UNA NUEVA RECETA A LA BASE DE DATOS
@@ -150,7 +150,7 @@ def insertar():
         #verificar que la receta no esté en la base de datos
         query = db.session.query(Recetas).filter(Recetas.nombre==nombre).first()
         if query:  
-            return jsonify('Esta receta ya existe'), 404
+            return jsonify('Esta receta ya existe'), 400
         
         #insertar la nueva receta en la base de datos en caso de no existir
         recetas.insert(nombre, ingredientes_db, categoria)
@@ -158,7 +158,7 @@ def insertar():
         return jsonify({'Nombre': nombre, 'Ingredientes': ingredientes_db, 'Categoría': categoria }), 201
     except:
         print({'trace': traceback.format_exc()})
-        return jsonify('No se ha podido procesar su solicitud'), 404
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
 #----------------------------------- Lanzar el server -----------------------------------#
 if __name__ == '__main__':
