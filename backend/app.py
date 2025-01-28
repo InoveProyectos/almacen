@@ -52,7 +52,8 @@ def home():
         # En el futuro se podria realizar una página de bienvenida
         return redirect(url_for('api'))
     except:
-        return jsonify({'trace': traceback.format_exc()})
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
 
 
 #RUTA PARA VER TODOS LOS ENDPOINTS DISPONIBLES
@@ -61,11 +62,14 @@ def api():
     try:
         result = "<h1>Endpoints disponibles:</h1>"
         result += "<h2>[GET] /almacen --> mostrar todas las recetas en formato JSON</h2>"
+        result += "<h2>[GET] /buscar/{palabra} --> buscar las recetas que tengan cierta palabra en el nombre</h2>"
+        result += "<h2>[GET] /buscar_id/{id} --> buscar un registro según su id</h2>"
         result += "<h2>[POST] /recomendar --> ingresar ingredientes y recomendar una receta en formato JSON</h2>"
         result += "<h2>[POST] /insertar --> insertar una nueva receta por JSON</h2>"
         return result
     except:
-        return jsonify({'trace': traceback.format_exc()})
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
     
 #RUTA PARA VER TODAS LAS RECETAS DISPONIBLES
@@ -75,8 +79,37 @@ def almacen():
         query = recetas.obtener_todo()
         return jsonify(query)
     except:
-        return jsonify({'trace': traceback.format_exc()})
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
+    
         
+#RUTA PARA BUSCAR UNA RECETA QUE TENGA CIERTA PALABRA EN EL NOMBRE
+@app.route("/buscar/<palabra>")
+def buscar(palabra):
+    try:
+        data = recetas.buscar(palabra)
+        if data: 
+            return jsonify(data)
+        else:
+            return jsonify({'Respuesta': 'Receta no encontrada'}), 404
+    except:
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
+
+
+#RUTA PARA BUSCAR UNA RECETA SEGÚN SU ID
+@app.route("/buscar_id/<id>")
+def buscar_id(id):
+    try:
+        data = recetas.filtrar_id(id)
+        if data: 
+            return jsonify(data)
+        else:
+            return jsonify({'Respuesta': 'Id no encontrado'}), 404
+    except:
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
+
 
 #RUTA PARA RECOMENDAR UNA RECETA A PARTIR DE LOS INGREDIENTES INGRESADOS
 @app.route("/recomendar", methods= ['POST'])
@@ -91,7 +124,8 @@ def recomendar():
         data = recetas.filtrar_id(indice)
         return jsonify(data)
     except:
-        return jsonify({'trace': traceback.format_exc()})
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
     
 
 #RUTA PARA INSERTAR UNA NUEVA RECETA A LA BASE DE DATOS
@@ -116,15 +150,16 @@ def insertar():
         #verificar que la receta no esté en la base de datos
         query = db.session.query(Recetas).filter(Recetas.nombre==nombre).first()
         if query:  
-            return jsonify('Esta receta ya existe')
+            return jsonify('Esta receta ya existe'), 400
         
         #insertar la nueva receta en la base de datos en caso de no existir
         recetas.insert(nombre, ingredientes_db, categoria)
         
         return jsonify({'Nombre': nombre, 'Ingredientes': ingredientes_db, 'Categoría': categoria }), 201
     except:
-        return jsonify({'trace': traceback.format_exc()})
-
+        print({'trace': traceback.format_exc()})
+        return jsonify('No se ha podido procesar su solicitud'), 400
+    
 #----------------------------------- Lanzar el server -----------------------------------#
 if __name__ == '__main__':
     print('Iniciando')

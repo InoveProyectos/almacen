@@ -38,6 +38,18 @@ def filtrar_id(id):
         json_result_list.append(json_result)
     return json_result_list
 
+#BUSCAR REGISTRO DE LA DB POR UNA PALABRA
+def buscar(palabra):
+    json_result_list=[]
+    query = db.session.query(Recetas).filter(Recetas.nombre.ilike(f'%{palabra}%')).all()
+    for i in query:
+        json_result= {}
+        json_result['Nombre']= i.nombre
+        json_result['Ingredientes']= i.ingredientes
+        json_result['Categoria']= i.categoria
+        json_result_list.append(json_result)
+    return json_result_list
+
 #INSERTAR NUEVA RECETA
 def insert(nombre, ingredientes, categoria):
     #crear nueva receta
